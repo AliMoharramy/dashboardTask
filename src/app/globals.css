@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.customer-table tr:nth-child(even) {
+  background-color: #f4f7fd;
+}
+
+.popup-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg-blur {
+  background: rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+.progressSvg::after {
+  position: absolute;
+  content: " ";
+  background-color: red;
+  width: 5px;
+  height: 30px;
+  width: 100%;
+  top: 20px;
+}

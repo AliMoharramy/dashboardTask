@@ -14,9 +14,9 @@ const config: Config = {
       white: "#FFFFFF",
       grayText: "#7E8595",
       borderColor: "rgba(0, 0, 0, 0.05)",
-      navborderColor: "rgba(0, 0, 0, 0.2)",
-      green: "#66956E",
-      red: "#BA797D",
+      navborderColor: "rgba(0, 0, 0, 0.15)",
+      green: "#078C03",
+      red: "#F20505",
       black: "#000000",
     },
     extend: {
