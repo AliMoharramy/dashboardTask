@@ -18,7 +18,7 @@ export default function TableHeader({ sort }: { sort: string }) {
 
   return (
     <tr>
-      <th className="text-left px-5 py-3">
+      <th className="text-left px-5 py-3 mobilehidden">
         <input
           type="checkbox"
           className="rounded-lg w-4 h-4 cursor-pointer border border-grayText bg-none"
@@ -29,7 +29,7 @@ export default function TableHeader({ sort }: { sort: string }) {
           href={sortCustomers(sortValue === "name" ? "" : "name")}
           className={`${
             sortValue === "name" && "text-black"
-          } flex text-left cursor-pointer`}
+          } flex text-left cursor-pointer ml-5 xl:ml-0 my-3 xl:my-0`}
         >
           NAME
           <svg
@@ -44,10 +44,10 @@ export default function TableHeader({ sort }: { sort: string }) {
           </svg>
         </a>
       </th>
-      <th className="text-left">DESCRIPTION</th>
-      <th>RATE</th>
-      <th>BALANCE</th>
-      <th>DEPOSIT</th>
+      <th className="text-left mobilehidden">DESCRIPTION</th>
+      <th className="mobilehidden">RATE</th>
+      <th className="mobilehidden">BALANCE</th>
+      <th className="mobilehidden">DEPOSIT</th>
       <th>
         <a
           href={sortCustomers(sortValue === "status" ? "" : "status")}
@@ -73,7 +73,7 @@ export default function TableHeader({ sort }: { sort: string }) {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
-            className="w-5"
+            className="w-5 mobilehidden mr-2 xl:mr-0"
           >
             <path
               fill="#7E8595"

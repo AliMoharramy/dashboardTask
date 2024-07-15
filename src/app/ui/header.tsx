@@ -3,11 +3,11 @@ import { useState } from "react";
 
 export default function Header() {
   const [subproduct, setSubProduct] = useState(false);
-  const [isMenuHidden, setIsMenuHidden] = useState(true);
+  const [isMenuHidden, setIsMenuHidden] = useState(false);
   return (
-    <header className="bg-white h-15vh border-b border-navborderColor">
+    <header className="bg-white h-15vh border-b flex items-center justify-between border-navborderColor">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto w-full flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -43,9 +43,8 @@ export default function Header() {
           <div className="relative [&:hover>div]:block">
             <button
               type="button"
-              className="flex  items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+              className="flex agmenu items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
               aria-expanded="false"
-              onMouseEnter={() => setSubProduct(true)}
             >
               Product
               <svg
@@ -62,11 +61,7 @@ export default function Header() {
               </svg>
             </button>
 
-            <div
-              className="hidden absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
-              onMouseEnter={() => setSubProduct(true)}
-              onMouseLeave={() => setSubProduct(false)}
-            >
+            <div className=" hidden mt-3 absolute -left-8 top-full z-10 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
               <div className="p-4">
                 <div className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
                   <div className="flex-auto">
@@ -143,13 +138,13 @@ export default function Header() {
           </a>
         </div>
       </nav>
+
       {isMenuHidden && (
         <div className="lg:hidden" role="dialog" aria-modal="true">
           <div className="fixed inset-0 z-10"></div>
           <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
                 <p className="font-bold">Task</p>
               </a>
               <button

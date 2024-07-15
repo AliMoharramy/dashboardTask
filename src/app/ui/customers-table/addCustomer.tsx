@@ -23,13 +23,17 @@ export default function AddCustomer({
     console.log(e);
   }
   return (
-    <div className="w-full h-full fixed top-0 left-0 bg-blur">
-      <div className="bg-white rounded-lg popup-center fixed">
+    <div className="w-full h-full fixed top-0 left-0 bg-blur z-50">
+      <div className="bg-white rounded-lg popup-center fixed w-5/6 xl:w-auto">
         <p className="font-bold text-lg mb-8 bg-tableTop p-5 rounded-t-lg text-grayText">
           New Customer
         </p>
         <form action={(e) => submitData(e)}>
-          <div className={`${step === 0 ? "flex" : "hidden"} px-5 gap-5`}>
+          <div
+            className={`${
+              step === 0 ? "grid" : "hidden"
+            } xl:grid-cols-2 px-5 gap-5`}
+          >
             <div className="flex flex-col">
               <label htmlFor="firstname">FirstName :</label>
               <input type="text" className="rounded-lg border p-2 mt-2 mb-5" />
@@ -40,7 +44,11 @@ export default function AddCustomer({
             </div>
           </div>
 
-          <div className={`${step === 1 ? "flex" : "hidden"} px-5 gap-5`}>
+          <div
+            className={`${
+              step === 1 ? "grid" : "hidden"
+            } xl:grid-cols-2 px-5 gap-5`}
+          >
             <div className="flex flex-col">
               <label htmlFor="firstname">Rate :</label>
               <input

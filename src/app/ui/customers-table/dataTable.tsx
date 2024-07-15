@@ -4,7 +4,7 @@ import {
   fetchCustomersPages,
   fetchFilteredCustomers,
   fetchSortedCustomers,
-} from "../lib/data";
+} from "../../lib/data";
 import Pagination from "./pagination";
 import TableHeader from "./tableHeader";
 
@@ -24,11 +24,12 @@ export default async function DataTable({
     : await fetchFilteredCustomers(query, currentPage);
   return (
     <>
-      <table className="table-auto customer-table w-full rounded-b-lg">
+      <table className="table-auto customer-table w-full h-80vh xl:h-auto rounded-b-lg">
         <thead className="bg-tableTop text-grayText">
           <TableHeader sort={sort} />
         </thead>
         <tbody>
+          {/* Create a row for each custmor */}
           {Array.from({ length: customers.length }, (_, i) => (
             <CustomerData customer={customers[i]} key={i} />
           ))}

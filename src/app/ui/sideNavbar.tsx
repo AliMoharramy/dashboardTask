@@ -1,6 +1,6 @@
 export default function SideNavbar() {
   return (
-    <div className="flex px-4 flex-col justify-between border-r border-navborderColor">
+    <div className="xl:flex hidden px-4 flex-col justify-between border-r border-navborderColor">
       <div className="flex flex-col gap-5 [&>svg]:cursor-pointer [&>svg]:p-3 [&>svg]:rounded-lg pt-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"

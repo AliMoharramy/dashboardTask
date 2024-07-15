@@ -1,8 +1,8 @@
 import Header from "./ui/header";
-import SearchBox from "./ui/searchBox";
-import DataTable from "./ui/dataTable";
+import SearchBox from "./ui/customers-table/searchBox";
+import DataTable from "./ui/customers-table/dataTable";
 import SideNavbar from "./ui/sideNavbar";
-import AddCustomerBtn from "./ui/addCustomerBtn";
+import AddCustomerBtn from "./ui/customers-table/addCustomerBtn";
 
 export default async function Page({
   searchParams,

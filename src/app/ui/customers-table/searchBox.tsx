@@ -7,6 +7,7 @@ export default function SearchBox() {
   const pathname = usePathname();
   const { replace } = useRouter();
 
+  // use-debounce for delay in changing input and server request
   const handleSearch = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
