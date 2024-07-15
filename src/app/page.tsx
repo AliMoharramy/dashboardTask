@@ -2,11 +2,20 @@ import Header from "./ui/header";
 import SearchBox from "./ui/searchBox";
 import DataTable from "./ui/dataTable";
 import SideNavbar from "./ui/sideNavbar";
-import { fetchCustomers } from "./lib/data";
 import AddCustomerBtn from "./ui/addCustomerBtn";
 
-export default async function Home() {
-  const allcustomers = await fetchCustomers();
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+    sort?: string;
+  };
+}) {
+  const query = searchParams?.query || "";
+  const sort = searchParams?.sort || "";
+  const currentPage = Number(searchParams?.page) || 1;
 
   return (
     <>
@@ -18,7 +27,7 @@ export default async function Home() {
             <SearchBox />
             <AddCustomerBtn />
           </div>
-          <DataTable customers={allcustomers} />
+          <DataTable query={query} currentPage={currentPage} sort={sort} />
         </div>
       </main>
     </>
