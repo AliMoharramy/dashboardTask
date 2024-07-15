@@ -1,7 +1,12 @@
+"use client";
+import { useState } from "react";
 import { customer } from "../lib/definition";
 import Status from "./status";
+import { editDescription } from "../lib/data";
 
 export default function CustomerData({ customer }: { customer: customer }) {
+  const [isEditind, setIsEditing] = useState(false);
+
   const balance =
     customer.balance == 0
       ? "text-grayText"
@@ -19,7 +24,33 @@ export default function CustomerData({ customer }: { customer: customer }) {
           <p className="text-grayText text-xs">{customer.id}</p>
         </div>
       </td>
-      <td>{customer.description}</td>
+      <td className="relative" onClick={() => setIsEditing(true)}>
+        <p className="cursor-cell description-text w-72">
+          {customer.description}
+        </p>
+        {isEditind && (
+          <form
+            action={(e) => editDescription(customer.id, e)}
+            className="absolute border popup-center w-full flex justify-between rounded-lg"
+          >
+            <input
+              type="text"
+              className="w-full"
+              maxLength={249}
+              name="description"
+            />
+            <button className="p-3 bg-white" type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                className="w-3"
+              >
+                <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+              </svg>
+            </button>
+          </form>
+        )}
+      </td>
       <td className="text-center">{customer.rate}</td>
       <td className={`${balance} text-center `}>{customer.balance}</td>
       <td className="text-center">{customer.deposit}</td>

@@ -33,3 +33,9 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 100%;
   top: 20px;
 }
+
+.description-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

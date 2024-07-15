@@ -16,7 +16,6 @@ export default function TableHeader({ sort }: { sort: string }) {
     return `${pathname}?${params.toString()}`;
   };
 
-  console.log(searchParams);
   return (
     <tr>
       <th className="text-left px-5 py-3">

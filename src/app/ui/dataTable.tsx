@@ -1,6 +1,10 @@
 import CustomerData from "./customerData";
-import sortOn from "sort-on";
-import { fetchCustomersPages, fetchFilteredCustomers } from "../lib/data";
+
+import {
+  fetchCustomersPages,
+  fetchFilteredCustomers,
+  fetchSortedCustomers,
+} from "../lib/data";
 import Pagination from "./pagination";
 import TableHeader from "./tableHeader";
 
@@ -13,12 +17,11 @@ export default async function DataTable({
   currentPage: number;
   sort: string;
 }) {
-  const customers = await fetchFilteredCustomers(query, currentPage);
   const totalPage = await fetchCustomersPages(query);
   const sortValue = sort.toString() || "";
-  const byNames = sortOn(customers, "firstname");
-  const byStatus = sortOn(customers, "status");
-
+  const customers = sortValue
+    ? await fetchSortedCustomers(query, currentPage, sortValue)
+    : await fetchFilteredCustomers(query, currentPage);
   return (
     <>
       <table className="table-auto customer-table w-full rounded-b-lg">
@@ -26,18 +29,9 @@ export default async function DataTable({
           <TableHeader sort={sort} />
         </thead>
         <tbody>
-          {sortValue === "" &&
-            Array.from({ length: customers.length }, (_, i) => (
-              <CustomerData customer={customers[i]} key={i} />
-            ))}
-          {sortValue === "name" &&
-            Array.from({ length: customers.length }, (_, i) => (
-              <CustomerData customer={byNames[i]} key={i} />
-            ))}
-          {sortValue === "status" &&
-            Array.from({ length: customers.length }, (_, i) => (
-              <CustomerData customer={byStatus[i]} key={i} />
-            ))}
+          {Array.from({ length: customers.length }, (_, i) => (
+            <CustomerData customer={customers[i]} key={i} />
+          ))}
         </tbody>
       </table>
       <Pagination totalPages={totalPage} customerNum={customers.length} />
